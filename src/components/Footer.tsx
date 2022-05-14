@@ -24,7 +24,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://t.me/marshallroganinuofficialchat"
+              href="https://t.me/"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -55,7 +55,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://marshallinu.medium.com/"
+              href="https://"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -71,7 +71,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.instagram.com/marshallinu_/"
+              href="https://www.instagram.com//"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -113,7 +113,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="mailto:contact@marshallinu.com"
+              href="/"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -131,7 +131,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://youtube.com/channel/UCBAyoap2kRRMK9GE0K3XJgw"
+              href="https://youtube.com/channel"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -148,7 +148,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.facebook.com/Marshallinu/"
+              href="https://www.facebook.com//"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -168,7 +168,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.tiktok.com/@marshallinu"
+              href="https://www.tiktok.com/"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -188,7 +188,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://www.reddit.com/r/marshallinu/"
+              href="https://www.reddit.com/r/"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
@@ -204,7 +204,7 @@ const Footer = () => {
               </svg>
             </a>
             <a
-              href="https://dexscreener.com/ethereum/0xaae64809138f576b0b50f1d898dd99055327c2d3"
+              href="https://dexscreener.com"
               rel="noopener noreferrer"
               target="_blank"
               className="pt-2 text-[#D02524] hover:text-orange-600"
