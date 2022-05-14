@@ -1,0 +1,5 @@
+export {default as Hero} from './Hero'
+export {default as Nav} from './Nav'
+export {default as Footer} from './Footer'
+export {default as Section} from './Section'
+export {default as Modal} from './Modal'

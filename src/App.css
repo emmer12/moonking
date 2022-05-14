@@ -1,38 +1,290 @@
-.App {
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+a {
+  text-decoration: none;
+}
+
+a:hover {
+  color: #a7000f !important;
+}
+
+p {
+  line-height: 2rem;
+  font-size: 1.25rem;
+}
+
+html {
+  scroll-behavior: smooth;
+
+}
+
+body {
+  background-color: #000;
+  color: rgba(255, 255, 255, 1);
+  font-family: 'Oswald', sans-serif;
+}
+
+
+
+.container,
+.container-fluid,
+.container-xxl,
+.container-xl,
+.container-lg,
+.container-md,
+.container-sm {
+  width: 100%;
+  padding-right: var(--bs-gutter-x, 0.75rem);
+  padding-left: var(--bs-gutter-x, 0.75rem);
+  margin-right: auto;
+  margin-left: auto;
+}
+
+@media (min-width: 576px) {
+
+  .container-sm,
+  .container {
+    max-width: 540px;
+  }
+}
+
+@media (min-width: 768px) {
+
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 720px;
+  }
+}
+
+@media (min-width: 992px) {
+
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 960px;
+  }
+}
+
+@media (min-width: 1200px) {
+
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1140px;
+  }
+}
+
+@media (min-width: 1400px) {
+
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1320px;
+  }
+}
+
+
+.btn-primary {
+  background: linear-gradient(90deg, #111827, #111827), linear-gradient(0deg, #a7000f, #d58600, #f4b000);
+  background-clip: padding-box, border-box;
+  background-origin: padding-box, border-box;
+  padding: .25rem;
+  border-width: 2px;
+  border-style: solid;
+  color: rgba(255, 255, 255, 1);
+  padding: 13px 15px;
+  border-color: transparent;
+  border-radius: 8px;
+  margin: 0px 7px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.btn-skew {
+  transform: skewX(-15deg);
+  white-space: nowrap;
+  color: #fff;
+  transition: 1s;
+  box-shadow: 6px 6px 0 #000;
+  padding: 1.75rem 1rem;
+  font-size: 2.25rem;
+  margin: 0px 10px;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.btn-skew.gradient {
+  background-image: linear-gradient(to right, #991b1b, #ca8a04);
+}
+
+.btn-skew.white {
+  background: #fff;
+  color: #444;
+}
+
+.btn-skew:hover {
+  transition: .5s;
+  box-shadow: 10px 10px 0 grey;
+}
+
+.menu .items a {
+  text-transform: uppercase;
+  padding: 0px 15px;
+  color: #fff;
+  font-weight: 600;
+}
+
+.disclaimer {
+  max-width: 64rem;
+  margin: auto;
   text-align: center;
+  font-size: 1.8rem;
+  padding: 100px 0px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.header-disclaimer h4 {
+  font-size: 20px;
+  text-transform: uppercase;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.header-disclaimer h2 {
+  background-image: linear-gradient(to right, #eab308);
+  font-size: 2.25rem;
+  color: #cf2523;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+
+footer {
+  background: #000;
+}
+
+footer .con {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
+  flex-wrap: wrap;
+
 }
 
-.App-link {
-  color: #61dafb;
+footer svg {
+  height: 2rem;
+  width: 2rem;
+  color: #cf2523;
+  margin: 0px 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+
+.sidebar {
+  line-height: 40px;
+  background: rgb(17 24 39);
+  padding: 20px;
+  width: 400px;
+  right: -400px;
+  position: fixed;
+  height: 100vh;
+  top: 0px;
+  transition: 0.5s ease-in-out;
+  transform: skew(120px);
+  z-index: 999999;
+}
+
+.sidebar.added {
+  right: 0px;
+  transform: skew(0px);
+
+}
+
+.sidebar .times,
+.times {
+  cursor: pointer;
+  color: #cf2523;
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: 36px;
+  width: 36px;
+}
+
+
+
+.sidebar h2 {
+  color: #cf2523;
+}
+
+.alert-enter {
+  opacity: 0;
+  transform: scale(0.9);
+}
+
+.alert-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.alert-exit {
+  opacity: 1;
+}
+
+.alert-exit-active {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 300ms, transform 300ms;
+}
+
+
+@media (max-width:640px) {
+  .menu {
+    display: none !important;
   }
-  to {
-    transform: rotate(360deg);
+
+  .btn-primary {
+    padding: 6px 7px;
+    margin: 0px 5px;
+    font-size: 12px;
+  }
+
+  .btn-skew {
+    padding: 0.5rem 0.7rem;
+    font-size: 1.5rem;
+
+  }
+
+  .sidebar {
+    width: 90%;
+    right: -90%;
+  }
+
+  .sidebar.added {
+    right: 0px;
+    transform: skew(0px);
+
   }
 }
