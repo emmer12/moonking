@@ -22,6 +22,11 @@ background-image:url(${require('../images/header.jpg')}) ;
 background-position: 50% 0;
 background-size: cover;
 background-repeat: no-repeat;
+
+@media (max-width:640px){
+height: 100%;
+
+}
 `
 export const Wrapper = styled.div`
 
