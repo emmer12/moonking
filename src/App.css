@@ -259,6 +259,17 @@ footer svg {
   transition: opacity 300ms, transform 300ms;
 }
 
+.logo{
+  height:50px;
+  width:50px;
+  margin-top: 15px;
+}
+
+.logo img{
+  width:100%;
+  height: auto;
+}
+
 
 @media (max-width:640px) {
   .menu {
@@ -273,7 +284,7 @@ footer svg {
 
   .btn-skew {
     padding: 0.5rem 0.7rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
   }
 
@@ -286,5 +297,11 @@ footer svg {
     right: 0px;
     transform: skew(0px);
 
+  }
+  .d-m-none{
+    display:none
+  }
+  .bar{
+    justify-content: flex-end;
   }
 }

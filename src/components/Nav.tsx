@@ -1,14 +1,14 @@
 import React from "react";
+import { logo } from "../images";
 import { NavContainer, Wrapper } from "./style";
-
 const Nav = ({setOpen}:any) => {
 
   return (
     <NavContainer>
       <Wrapper className="container">
         <Wrapper className="flex">
-          <div>
-            <h2>Logo</h2>
+          <div className="logo">
+            <img src={logo} alt="Logo" />    
           </div>
 
           <Wrapper className="flex between">
@@ -17,18 +17,18 @@ const Nav = ({setOpen}:any) => {
               <div className="items"><a href="#tokenomics">Tokenomics</a></div>
               <div className="items"><a href="#airdrop">Airdrop</a></div>
             </Wrapper>
-            <Wrapper className="flex">
-              <div>
+            <Wrapper className=" flex">
+              <div className="d-m-none">
                 {" "}
                 <button className="btn btn-primary">Trade on Uniswap</button>
               </div>
-              <div>
+              <div className="d-m-none">
                 {" "}
                 <button className="btn btn-primary">
                   Trade on PankcakeSwap
                 </button>
               </div>
-              <div onClick={() => setOpen(true)}>
+              <div onClick={() => setOpen(true)} className="bar">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"

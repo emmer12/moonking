@@ -32,6 +32,11 @@ export const Wrapper = styled.div`
     width: 100%;
     justify-content:space-between
 }
+
+
+@media (max-width:640px){
+  justify-content: flex-end !important;
+}
 `
 
 // Modal Styling
@@ -74,4 +79,39 @@ export const ModalHeader = styled.div`
           color:#f3af00;
       }
   }
-` 
+`
+
+
+export const Inner = styled.div`
+display:flex;
+flex-wrap:wrap;
+width:100%;
+padding:50px 0px;
+> div{
+  width:50%;
+  
+  &.left{
+    text-align:center;
+    img{
+      width:50%;
+    }
+  }
+}
+
+@media (max-width:640px){
+  padding:20px ;
+  > div{
+  width:100%;
+  &.left{
+    img{
+      width:80%;
+    }
+  }
+}
+`
+
+
+export const Action = styled.div`
+text-align: center;
+
+`
