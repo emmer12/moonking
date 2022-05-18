@@ -3,7 +3,7 @@ import "./App.css";
 
 import { Nav, Hero, Footer, Section, Modal } from "./components";
 import { Wrapper } from "./components/style";
-import { empowering, tokenomics_table } from "./images";
+import { empowering, roadmap_v1, tokenomics_table } from "./images";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -48,7 +48,7 @@ function App() {
         </Section>
       </div>
 
-      <Section title="Our Goal" bg="#cf2523">
+      <Section title="Target Goal" bg="#cf2523">
         <p>
           $MOONKING was created in the spirit of giving. 10k $PLSX Sacrificers
           chose to claim their $MOONKING. We are here to Give, Grow $MOONKING,
@@ -77,7 +77,7 @@ function App() {
         <h4>We are $MOONKING.</h4>
       </Section>
 
-      <div className="container" style={{padding:'100px 0px'}}>
+      <div className="container" style={{ padding: "100px 0px" }}>
         <img src={empowering} alt="Empowering table" width="100%" />
       </div>
 
@@ -112,6 +112,12 @@ function App() {
           </p>
         </div>
       </div>
+
+      <Section title="Roadmap" bg="#550d0c">
+        <br />
+        <br />
+        <img src={roadmap_v1.default} alt="Readmap" />
+      </Section>
 
       <Modal
         open={mOpen}
