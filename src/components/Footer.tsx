@@ -1,11 +1,14 @@
 import React from "react";
+import { logo } from "../images";
 
 const Footer = () => {
   return (
     <footer className="bg-black">
       <div className="container con">
-        <div>Logo</div>
-        <div className="px-4 py-12 mx-auto max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
+        <div className="logo">
+          <img src={logo} alt="Logo" />
+        </div>
+        <div className="brands px-4 py-12 mx-auto max-w-7xl sm:px-6 md:flex md:items-center md:justify-between lg:px-8">
           <div className="flex flex-wrap justify-center space-x-6 md:order-2">
             <a
               href="/"
@@ -224,37 +227,7 @@ const Footer = () => {
               </svg>
             </a>
           </div>
-          <div className="mt-8 md:order-1 md:mt-0">
-            <p className="text-base text-center text-gray-400">
-              <span>
-                <span>
-                  <img
-                    alt=""
-                    aria-hidden="true"
-                    src="data:image/svg+xml,%3csvg%20xmlns=%27http://www.w3.org/2000/svg%27%20version=%271.1%27%20width=%2780%27%20height=%2780%27/%3e"
-                  />
-                </span>
-                <img
-                  alt="logo"
-                  src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7"
-                  decoding="async"
-                  data-nimg="intrinsic"
-                  className=""
-                />
-                <noscript>
-                  <img
-                    alt="logo"
-                    srcSet="/_next/image?url=%2Flogos%2Fcircle2.png&amp;w=96&amp;q=100 1x, /_next/image?url=%2Flogos%2Fcircle2.png&amp;w=256&amp;q=100 2x"
-                    src="_next/circle22d3e.png?url=%2Flogos%2Fcircle2.png&amp;w=256&amp;q=100"
-                    decoding="async"
-                    data-nimg="intrinsic"
-                    className=""
-                    loading="lazy"
-                  />
-                </noscript>
-              </span>
-            </p>
-          </div>
+        
         </div>
       </div>
     </footer>

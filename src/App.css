@@ -178,6 +178,7 @@ footer .con {
   justify-content: space-between;
   flex-wrap: wrap;
 
+
 }
 
 footer svg {
@@ -187,6 +188,11 @@ footer svg {
   margin: 0px 10px;
 }
 
+footer .brands {
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
 
 .sr-only {
   position: absolute;
@@ -259,14 +265,14 @@ footer svg {
   transition: opacity 300ms, transform 300ms;
 }
 
-.logo{
-  height:50px;
-  width:50px;
+.logo {
+  height: 50px;
+  width: 50px;
   margin-top: 15px;
 }
 
-.logo img{
-  width:100%;
+.logo img {
+  width: 100%;
   height: auto;
 }
 
@@ -298,10 +304,19 @@ footer svg {
     transform: skew(0px);
 
   }
-  .d-m-none{
-    display:none
+
+  .d-m-none {
+    display: none
   }
-  .bar{
+
+  .bar {
     justify-content: flex-end;
+  }
+
+  footer .con {
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
+
   }
 }

@@ -98,7 +98,13 @@ padding:50px 0px;
   &.left{
     text-align:center;
     img{
-      width:50%;
+      width:60%;
+    }
+  }
+  &.right{
+    text-align:center;
+    img{
+      width:70%;
     }
   }
 }

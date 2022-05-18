@@ -1,5 +1,5 @@
 import React from "react";
-import { logoRounded } from "../images";
+import { logoRounded,passion } from "../images";
 import { HeroContainer, Wrapper, Inner,Action } from "./style";
 
 const Hero = () => {
@@ -10,8 +10,8 @@ const Hero = () => {
           <Wrapper className="left">
             <img src={logoRounded} alt="Logo Rounded" />
           </Wrapper>
-          <Wrapper>
-              <h1>MoonKing...</h1>
+          <Wrapper className="right">
+            <img src={passion} alt="Logo Rounded" width="100%" />
           </Wrapper>
         </Inner>
       </Wrapper>
