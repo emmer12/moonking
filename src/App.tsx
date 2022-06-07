@@ -3,7 +3,7 @@ import "./App.css";
 
 import { Nav, Hero, Footer, Section, Modal } from "./components";
 import { Wrapper } from "./components/style";
-import { empowering, roadmap_v1, tokenomics_table } from "./images";
+import { empowering, roadmap, tokenomics_table } from "./images";
 
 function App() {
   const [open, setOpen] = useState(false);
@@ -116,7 +116,7 @@ function App() {
       <Section title="Roadmap" bg="#550d0c">
         <br />
         <br />
-        <img src={roadmap_v1.default} alt="Readmap" />
+        <img width="100%" src={roadmap} alt="Readmap" />
       </Section>
 
       <Modal

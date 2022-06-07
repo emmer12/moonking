@@ -26,6 +26,9 @@ html {
 
 body {
   background-color: #000;
+  /* background-image: url(./images/bg.jpg); */
+  background-repeat: no-repeat;
+  background-size: cover;
   color: rgba(255, 255, 255, 1);
   font-family: 'Oswald', sans-serif;
 }
@@ -96,6 +99,17 @@ body {
   }
 }
 
+@media (min-width: 1440px) {
+
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1440px;
+  }
+}
 
 .btn-primary {
   background: linear-gradient(90deg, #111827, #111827), linear-gradient(0deg, #a7000f, #d58600, #f4b000);
