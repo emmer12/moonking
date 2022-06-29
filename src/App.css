@@ -25,10 +25,10 @@ html {
 }
 
 body {
-  background-color: #000;
-  /* background-image: url(./images/bg.jpg); */
-  background-repeat: no-repeat;
-  background-size: cover;
+  /* background-color: #000; */
+  background-image: url(./images/bg.jpg);
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   color: rgba(255, 255, 255, 1);
   font-family: 'Oswald', sans-serif;
 }
