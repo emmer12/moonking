@@ -25,7 +25,10 @@ html {
 }
 
 body {
-  background-color: #000;
+  /* background-color: #000; */
+  background-image: url(./images/bg.jpg);
+  /* background-repeat: no-repeat; */
+  /* background-size: cover; */
   color: rgba(255, 255, 255, 1);
   font-family: 'Oswald', sans-serif;
 }
@@ -96,6 +99,17 @@ body {
   }
 }
 
+@media (min-width: 1440px) {
+
+  .container-xxl,
+  .container-xl,
+  .container-lg,
+  .container-md,
+  .container-sm,
+  .container {
+    max-width: 1440px;
+  }
+}
 
 .btn-primary {
   background: linear-gradient(90deg, #111827, #111827), linear-gradient(0deg, #a7000f, #d58600, #f4b000);
@@ -178,6 +192,7 @@ footer .con {
   justify-content: space-between;
   flex-wrap: wrap;
 
+
 }
 
 footer svg {
@@ -187,6 +202,11 @@ footer svg {
   margin: 0px 10px;
 }
 
+footer .brands {
+  align-items: center;
+  display: flex;
+  text-align: center;
+}
 
 .sr-only {
   position: absolute;
@@ -259,6 +279,17 @@ footer svg {
   transition: opacity 300ms, transform 300ms;
 }
 
+.logo {
+  height: 50px;
+  width: 50px;
+  margin-top: 15px;
+}
+
+.logo img {
+  width: 100%;
+  height: auto;
+}
+
 
 @media (max-width:640px) {
   .menu {
@@ -273,7 +304,7 @@ footer svg {
 
   .btn-skew {
     padding: 0.5rem 0.7rem;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
   }
 
@@ -285,6 +316,21 @@ footer svg {
   .sidebar.added {
     right: 0px;
     transform: skew(0px);
+
+  }
+
+  .d-m-none {
+    display: none
+  }
+
+  .bar {
+    justify-content: flex-end;
+  }
+
+  footer .con {
+    flex-wrap: wrap-reverse;
+    align-items: center;
+    justify-content: center;
 
   }
 }
