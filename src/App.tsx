@@ -113,7 +113,7 @@ function App() {
         </div>
       </div>
 
-      <Section title="Roadmap" bg="#550d0c">
+      <Section title="Roadmap" bg="rgb(85 13 12 / 50%)">
         <br />
         <br />
         <img width="100%" src={roadmap} alt="Readmap" />
