@@ -4,10 +4,25 @@ import "./App.css";
 import { Nav, Hero, Footer, Section, Modal } from "./components";
 import { Wrapper } from "./components/style";
 import { empowering, roadmap, tokenomics_table } from "./images";
+import { useWeb3React } from "@web3-react/core";
+import { injected } from "./connectors/injected";
 
 function App() {
   const [open, setOpen] = useState(false);
   const [mOpen, setMOpen] = useState(false);
+  const { account, activate, deactivate, connector } = useWeb3React();
+
+  async function connect() {
+    try {
+      await activate(injected);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+
+  const claim = () => {
+    alert("Claiming....");
+  };
 
   return (
     <div className="App">
@@ -122,7 +137,9 @@ function App() {
       <Modal
         open={mOpen}
         close={() => setMOpen(false)}
-        account={"0x631f66695fF94ACDd804dFcdad1371BC61447e453"}
+        account={account}
+        handleConnect={() => connect()}
+        handleClaim={() => claim()}
       />
       <Footer />
     </div>

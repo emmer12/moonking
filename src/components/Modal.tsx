@@ -3,13 +3,21 @@ import { ModalContainer, ModalBody, ModalInner, ModalHeader } from "./style";
 import { CSSTransition } from "react-transition-group";
 interface IModal {
   open: boolean;
-  account: string;
+  account: undefined | string | null;
   close: () => void;
+  handleConnect: () => void;
+  handleClaim: () => void;
 }
 
-const Modal = ({ open, account, close }: IModal) => {
+const Modal = ({
+  open,
+  account,
+  close,
+  handleConnect,
+  handleClaim,
+}: IModal) => {
   return (
-    <CSSTransition in={open}  unmountOnExit timeout={200} classNames="alert">
+    <CSSTransition in={open} unmountOnExit timeout={200} classNames="alert">
       <ModalContainer>
         <ModalInner>
           <ModalHeader>
@@ -51,9 +59,13 @@ const Modal = ({ open, account, close }: IModal) => {
             <br />
 
             {account ? (
-              <button className="btn-primary">Claimed</button>
+              <button className="btn-primary" onClick={handleClaim}>
+                Claimed
+              </button>
             ) : (
-              <button className="btn-primary">Connect Wallet</button>
+              <button className="btn-primary" onClick={handleConnect}>
+                Connect Wallet
+              </button>
             )}
           </ModalBody>
           <br />
