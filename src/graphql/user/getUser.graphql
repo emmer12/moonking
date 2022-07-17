@@ -1,0 +1,13 @@
+query GetUser($account: String!) {
+  getUser(account: $account) {
+    id
+    claim_hash
+    claim_signature
+    token
+    claimed
+    amount
+    claimed_at
+    eligible
+    account
+  }
+}

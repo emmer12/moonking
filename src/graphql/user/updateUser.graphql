@@ -1,0 +1,12 @@
+mutation UpdateUser($account: String!, $claim_hash: String!) {
+  updateUser(account: $account, claim_hash: $claim_hash) {
+    id
+    claim_hash
+    claim_signature
+    claimed
+    amount
+    claimed_at
+    eligible
+    account
+  }
+}

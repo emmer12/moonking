@@ -1,0 +1,12 @@
+mutation CreateUser($account: String!) {
+  createUser(account: $account) {
+   id
+    claim_hash
+    claim_signature
+    claimed
+    amount
+    claimed_at
+    eligible
+    account
+  }
+}
