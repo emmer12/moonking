@@ -1,7 +1,7 @@
 import React from "react";
 import { logo } from "../images";
 import { NavContainer, Wrapper } from "./style";
-const Nav = ({setOpen}:any) => {
+const Nav = ({setOpen, connect, account}:any) => {
 
   return (
     <NavContainer>
@@ -28,6 +28,12 @@ const Nav = ({setOpen}:any) => {
                   Trade on PankcakeSwap
                 </button>
               </div>
+              {!account? <div className="d-m-none">
+                {" "}
+                <button onClick={connect} className="btn btn-primary">
+                  Connect
+                </button>
+              </div>:
               <div onClick={() => setOpen(true)} className="bar">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -49,7 +55,7 @@ const Nav = ({setOpen}:any) => {
                     d="M4 6h16M4 12h16M4 18h16"
                   ></path>
                 </svg>
-              </div>
+              </div>}
             </Wrapper>
           </Wrapper>
         </Wrapper>

@@ -1,13 +1,59 @@
-import React, { useState } from "react";
+import React, { useState,useRef,useEffect } from "react";
 import "./App.css";
 
 import { Nav, Hero, Footer, Section, Modal } from "./components";
 import { Wrapper } from "./components/style";
 import { empowering, roadmap, tokenomics_table } from "./images";
+import { useWeb3React } from "@web3-react/core";
+import { injected } from "./connectors/injected";
+import { useGetUserLazyQuery,useCreateUserMutation, User} from "./generated/graphql-frontend"
 
 function App() {
   const [open, setOpen] = useState(false);
   const [mOpen, setMOpen] = useState(false);
+  const { account, activate, deactivate, connector } = useWeb3React();
+
+  const [getUser, { data, loading, error }] = useGetUserLazyQuery();
+   const [createUserMutation, user_data] = useCreateUserMutation();
+  const [user, setUser] = useState<User>()
+  const [canClaim, setCanClaim] = useState(false)
+  
+
+  async function connect() {
+    console.log("connecting")
+    try {
+      await activate(injected);
+    } catch (ex) {
+      console.log(ex);
+    }
+  }
+  
+
+
+
+  const claim = () => {
+    alert("Claiming....");
+  };
+
+
+  useEffect(()=>{
+    if(account){
+      getUser({
+        variables: {
+          account
+        }
+      })
+    }
+    console.log({data})
+    if(!user&& data?.getUser){
+      setUser(data?.getUser as User)
+    }
+
+    if(account&&!user&&!data?.getUser){
+      createUserMutation({variables:{account}})
+    }
+    console.log({user})
+  },[account, data, user])
 
   return (
     <div className="App">
@@ -32,12 +78,11 @@ function App() {
         <div>
           <h2>Landing Page</h2>
         </div>
-        <div className="items">Disclaimer</div>
-        <div className="items">Tokenomics</div>
-        <div className="items">Airdrop</div>
-        <div className="items">Disclaimer</div>
+        <div className="items"><a style={{color: "#fff"}} href="#airdrop">Airdrop</a></div>
+        <div className="items"><a style={{color: "#fff"}} href="#tokenomics">Tokenomics</a></div>
+        <div className="items"><a style={{color: "#fff"}} href="#disclaimer">Disclaimer</a></div>
       </Wrapper>
-      <Nav setOpen={setOpen} />
+      <Nav {...{setOpen, connect, account}} />
       <Hero />
 
       <div id="airdrop">
@@ -122,7 +167,11 @@ function App() {
       <Modal
         open={mOpen}
         close={() => setMOpen(false)}
-        account={"0x631f66695fF94ACDd804dFcdad1371BC61447e453"}
+        account={account}
+        eligible={user?.eligible??false}
+        hasClaimed={user?.claimed??false}
+        handleConnect={() => connect()}
+        handleClaim={() => claim()}
       />
       <Footer />
     </div>
