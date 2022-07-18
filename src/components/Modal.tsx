@@ -54,11 +54,11 @@ const Modal = ({
 
           <ModalBody>
             <h3>
-             {!eligible? "Sorry!!!":"Congratulations!!!"}
+             {account?(!eligible? "Sorry!!!":"Congratulations!!!"): null}
 
             </h3>
-           {eligible? (hasClaimed?<p>You have already claimed your 55500 $MoonKing Tokens</p> :<p>You are eligible to claim 55500 $MoonKing Tokens</p>):
-            <p>You are NOT eligible to claim 55500 $MoonKing Tokens</p>}
+           {account?(eligible? (hasClaimed?<p>You have already claimed your 55500 $MoonKing Tokens</p> :<p>You are eligible to claim 55500 $MoonKing Tokens</p>):
+            <p>You are NOT eligible to claim 55500 $MoonKing Tokens</p>): <p>Please connect your wallet!</p>}
 
             <br />
 

@@ -6,15 +6,17 @@ import { Wrapper } from "./components/style";
 import { empowering, roadmap, tokenomics_table } from "./images";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "./connectors/injected";
-import { useGetUserLazyQuery,useCreateUserMutation, User} from "./generated/graphql-frontend"
-
+import { useGetUserLazyQuery,GetUserDocument,useCreateUserMutation, User, useUpdateUserMutation} from "./generated/graphql-frontend"
+import { claim_contract} from "./blockchain/index"
 function App() {
+
   const [open, setOpen] = useState(false);
   const [mOpen, setMOpen] = useState(false);
-  const { account, activate, deactivate, connector } = useWeb3React();
+  const { account, activate, deactivate, connector, library } = useWeb3React();
 
   const [getUser, { data, loading, error }] = useGetUserLazyQuery();
-   const [createUserMutation, user_data] = useCreateUserMutation();
+  const [createUserMutation, user_data] = useCreateUserMutation();
+  const [updateUserMutation, updateData] = useUpdateUserMutation();
   const [user, setUser] = useState<User>()
   const [canClaim, setCanClaim] = useState(false)
   
@@ -31,8 +33,29 @@ function App() {
 
 
 
-  const claim = () => {
-    alert("Claiming....");
+  const claim = async() => {
+    if(user && user?.eligible && !user?.claimed){
+      const txnHash = await claim_contract(library.provider, user)
+      // const txnHash = "0x8fe8d0a77c3edfdd7f3f9f5ef0f679245efea8e12923d8156a4454ca336f7805"
+      if(txnHash){
+        updateUserMutation({ variables: {
+          account: account?? "", // value for 'account'
+          claim_hash: txnHash??""// value for 'claim_hash'
+        },update: (cache: any, {data: { updateUser}}: any) => {
+          console.log({cache,updateUser })
+          cache.writeFragment({
+            id: cache.identify(user),
+            fragment: GetUserDocument,
+            data: {
+              claimed: true,
+              claim_hash: txnHash
+            }
+          })
+        }
+        })
+      }
+    }
+    return
   };
 
 

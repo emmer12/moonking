@@ -4,6 +4,7 @@ mutation UpdateUser($account: String!, $claim_hash: String!) {
     claim_hash
     claim_signature
     claimed
+    nonce
     amount
     claimed_at
     eligible

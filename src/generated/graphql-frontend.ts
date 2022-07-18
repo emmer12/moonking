@@ -61,14 +61,14 @@ export type CreateUserMutationVariables = Exact<{
 }>;
 
 
-export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'User', id: string, claim_hash?: string | null, claim_signature?: string | null, claimed: boolean, amount: string, claimed_at?: string | null, eligible: boolean, account: string } };
+export type CreateUserMutation = { __typename?: 'Mutation', createUser: { __typename?: 'User', id: string, claim_hash?: string | null, claim_signature?: string | null, claimed: boolean, nonce?: string | null, amount: string, claimed_at?: string | null, eligible: boolean, account: string } };
 
 export type GetUserQueryVariables = Exact<{
   account: Scalars['String'];
 }>;
 
 
-export type GetUserQuery = { __typename?: 'Query', getUser: { __typename?: 'User', id: string, claim_hash?: string | null, claim_signature?: string | null, token?: string | null, claimed: boolean, amount: string, claimed_at?: string | null, eligible: boolean, account: string } };
+export type GetUserQuery = { __typename?: 'Query', getUser: { __typename?: 'User', id: string, claim_hash?: string | null, claim_signature?: string | null, nonce?: string | null, token?: string | null, claimed: boolean, amount: string, claimed_at?: string | null, eligible: boolean, account: string } };
 
 export type UpdateUserMutationVariables = Exact<{
   account: Scalars['String'];
@@ -76,7 +76,7 @@ export type UpdateUserMutationVariables = Exact<{
 }>;
 
 
-export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'User', id: string, claim_hash?: string | null, claim_signature?: string | null, claimed: boolean, amount: string, claimed_at?: string | null, eligible: boolean, account: string } };
+export type UpdateUserMutation = { __typename?: 'Mutation', updateUser: { __typename?: 'User', id: string, claim_hash?: string | null, claim_signature?: string | null, claimed: boolean, nonce?: string | null, amount: string, claimed_at?: string | null, eligible: boolean, account: string } };
 
 
 export const CreateUserDocument = gql`
@@ -86,6 +86,7 @@ export const CreateUserDocument = gql`
     claim_hash
     claim_signature
     claimed
+    nonce
     amount
     claimed_at
     eligible
@@ -125,6 +126,7 @@ export const GetUserDocument = gql`
     id
     claim_hash
     claim_signature
+    nonce
     token
     claimed
     amount
@@ -169,6 +171,7 @@ export const UpdateUserDocument = gql`
     claim_hash
     claim_signature
     claimed
+    nonce
     amount
     claimed_at
     eligible

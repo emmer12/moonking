@@ -3,6 +3,7 @@ query GetUser($account: String!) {
     id
     claim_hash
     claim_signature
+    nonce
     token
     claimed
     amount
