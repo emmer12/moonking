@@ -1,4 +1,4 @@
-import React, { useState,useRef,useEffect } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 
 import { Nav, Hero, Footer, Section, Modal } from "./components";
@@ -6,10 +6,44 @@ import { Wrapper } from "./components/style";
 import { empowering, roadmap, tokenomics_table } from "./images";
 import { useWeb3React } from "@web3-react/core";
 import { injected } from "./connectors/injected";
-import { useGetUserLazyQuery,GetUserDocument,useCreateUserMutation, User, useUpdateUserMutation} from "./generated/graphql-frontend"
-import { claim_contract} from "./blockchain/index"
-function App() {
+import {
+  useGetUserLazyQuery,
+  GetUserDocument,
+  useCreateUserMutation,
+  User,
+  useUpdateUserMutation,
+} from "./generated/graphql-frontend";
+import { claim_contract } from "./blockchain/index";
+import styled from "styled-components";
 
+const LoaderWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  height: 100vh;
+  width: 100vh;
+  background-color: inset 0 0 0 1000px rgba(0, 0, 0, 0.2);
+  z-index: 199999;
+`;
+const Loader = styled.div`
+  border: 10px solid #f3f3f3;
+  border-top: 10px solid #3498db;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 1s linear infinite;
+  @keyframes spin {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
+  }
+`;
+
+function App() {
   const [open, setOpen] = useState(false);
   const [mOpen, setMOpen] = useState(false);
   const { account, activate, deactivate, connector, library } = useWeb3React();
@@ -17,69 +51,86 @@ function App() {
   const [getUser, { data, loading, error }] = useGetUserLazyQuery();
   const [createUserMutation, user_data] = useCreateUserMutation();
   const [updateUserMutation, updateData] = useUpdateUserMutation();
-  const [user, setUser] = useState<User>()
-  const [canClaim, setCanClaim] = useState(false)
-  
+  const [user, setUser] = useState<User>();
+  const [txnLoading, setTxnLoading] = useState(false);
 
   async function connect() {
-    console.log("connecting")
     try {
       await activate(injected);
     } catch (ex) {
       console.log(ex);
     }
   }
-  
 
-
-
-  const claim = async() => {
-    if(user && user?.eligible && !user?.claimed){
-      const txnHash = await claim_contract(library.provider, user)
-      // const txnHash = "0x8fe8d0a77c3edfdd7f3f9f5ef0f679245efea8e12923d8156a4454ca336f7805"
-      if(txnHash){
-        updateUserMutation({ variables: {
-          account: account?? "", // value for 'account'
-          claim_hash: txnHash??""// value for 'claim_hash'
-        },update: (cache: any, {data: { updateUser}}: any) => {
-          console.log({cache,updateUser })
-          cache.writeFragment({
-            id: cache.identify(user),
-            fragment: GetUserDocument,
-            data: {
-              claimed: true,
-              claim_hash: txnHash
-            }
-          })
+  const claim = async () => {
+    try{
+        if (user && user?.eligible && !user?.claimed) {
+        setMOpen(false);
+        setTxnLoading(true);
+        const txnHash = await claim_contract(library.provider, user);
+        if (txnHash) {
+          updateUserMutation({
+            variables: {
+              account: account ?? "", // value for 'account'
+              claim_hash: txnHash ?? "", // value for 'claim_hash'
+            },
+            refetchQueries:[{query: GetUserDocument}],
+            // update: (cache: any, { data: { updateUser } }: any) => {
+            //   cache.writeQuery({
+            //     query: GetUserDocument,
+            //     id: cache.identify(user),
+            //     data: {
+            //       ...user,
+            //       claimed: true,
+            //       claim_hash: txnHash,
+            //     },
+            //     variable: {
+            //       account,
+            //     },
+            //   });
+            //   setTxnLoading(false);
+            //   setUser(data?.getUser);
+              
+            // },
+          });
         }
-        })
       }
-    }
-    return
+      return;
+    }catch(e:any){
+        setTxnLoading(false);
+        if (e.code === 4001) console.log(e?.message)
+        else console.log("Catched error: >>", e?.error?.message)
+      }
+      
   };
 
-
-  useEffect(()=>{
-    if(account){
+  useEffect(() => {
+    if (account) {
       getUser({
         variables: {
-          account
-        }
-      })
+          account,
+        },
+      });
     }
-    console.log({data})
-    if(!user&& data?.getUser){
-      setUser(data?.getUser as User)
+    console.log({ data });
+    if (!user && data?.getUser) {
+      setUser(data?.getUser as User);
     }
-
-    if(account&&!user&&!data?.getUser){
-      createUserMutation({variables:{account}})
+    setUser(data?.getUser as User)
+    if (account && !user && !data?.getUser) {
+      createUserMutation({ variables: { account } });
     }
-    console.log({user})
-  },[account, data, user])
+    console.log({ user });
+  }, [account, data?.getUser, updateData.data]);
 
   return (
     <div className="App">
+      {txnLoading &&
+      <LoaderWrapper>
+      <Loader />
+      </LoaderWrapper>}
+
+      <>
       <Wrapper className={open ? "sidebar added" : "sidebar"}>
         <div onClick={() => setOpen(false)}>
           <svg
@@ -101,11 +152,23 @@ function App() {
         <div>
           <h2>Landing Page</h2>
         </div>
-        <div className="items"><a style={{color: "#fff"}} href="#airdrop">Airdrop</a></div>
-        <div className="items"><a style={{color: "#fff"}} href="#tokenomics">Tokenomics</a></div>
-        <div className="items"><a style={{color: "#fff"}} href="#disclaimer">Disclaimer</a></div>
+        <div className="items">
+          <a style={{ color: "#fff" }} href="#airdrop">
+            Airdrop
+          </a>
+        </div>
+        <div className="items">
+          <a style={{ color: "#fff" }} href="#tokenomics">
+            Tokenomics
+          </a>
+        </div>
+        <div className="items">
+          <a style={{ color: "#fff" }} href="#disclaimer">
+            Disclaimer
+          </a>
+        </div>
       </Wrapper>
-      <Nav {...{setOpen, connect, account}} />
+      <Nav {...{ setOpen, connect, account }} />
       <Hero />
 
       <div id="airdrop">
@@ -191,12 +254,13 @@ function App() {
         open={mOpen}
         close={() => setMOpen(false)}
         account={account}
-        eligible={user?.eligible??false}
-        hasClaimed={user?.claimed??false}
+        eligible={user?.eligible ?? false}
+        hasClaimed={user?.claimed ?? false}
         handleConnect={() => connect()}
         handleClaim={() => claim()}
       />
       <Footer />
+      </>
     </div>
   );
 }

@@ -44,13 +44,13 @@ const client = new ApolloClient({
 
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
       <Web3ReactProvider getLibrary={getLibrary}>
+    <ApolloProvider client={client}>
         <MetamaskProvider>
           <App />
         </MetamaskProvider>
-      </Web3ReactProvider>
     </ApolloProvider>
+      </Web3ReactProvider>
   </React.StrictMode>
 );
 
