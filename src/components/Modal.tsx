@@ -28,7 +28,7 @@ const Modal = ({
             <h1>Moonking Reward</h1>
             {account && (
               <div className="wallet">
-                <h3>Connected Wallet</h3>
+                <h3 /* onClick={handleConnect} */>Connected Wallet</h3>
                 <p>{account}</p>
               </div>
             )}

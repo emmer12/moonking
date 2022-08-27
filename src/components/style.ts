@@ -16,7 +16,7 @@ export const NavContainer = styled.div`
 
 export const HeroContainer = styled.div`
   height: 100vh;
-  background-image: url(${require("../images/header.jpg")});
+  background-image: url(${require("../images/bg.jpg")});
   background-position: 50% 0;
   background-size: cover;
   background-repeat: no-repeat;

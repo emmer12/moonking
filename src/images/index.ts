@@ -5,3 +5,7 @@ export const roadmap_v1 = require("./roadmap-v1.svg");
 export const roadmap = require("./roadmap.jpg");
 export const empowering = require("./empowering.webp");
 export const tokenomics_table = require("./tokenomics-table.svg");
+export const Header = require("./Header.png")
+export const Middle = require("./Middle1.png")
+export const Middle2 = require("./Middle2.png")
+export const Tokenomics = require("./Tokenomics.png")
